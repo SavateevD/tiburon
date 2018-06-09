@@ -1,0 +1,30 @@
+﻿@model _tiburon.Models.ViewModels.RespondentViewModel
+
+<div class="row" >
+    <div class="col align-self-center">
+        @Html.ValidationSummary()
+        <form asp-action="Index" asp-controller="Home" data-ajax-method="POST" data-ajax-mode="replace" data-ajax="true" data-ajax-update="#content">
+            <p>
+                @Model.FirstQuestion
+                <label>Мужской</label>
+                <input type="radio" name="gender" value="male" required />
+                <label>Женский</label>
+                <input type="radio" name="gender" value="female" required  />
+            </p>
+            <p>
+                    @Model.SecondQuestion
+                    @foreach (var PhoneMark in Model.PhoneMarks)
+                    {
+
+                        <label>@PhoneMark.Name</label>
+                        <input type="checkbox" name="items" value="@PhoneMark.Name" />
+
+                    }
+            </p>
+            <p>
+                <input type="submit" value="Ответить" class="btn btn-success" />
+            </p>
+        </form>
+    </div>
+</div>
+
